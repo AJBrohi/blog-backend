@@ -3,6 +3,8 @@ const app = express();
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const authRoute = require('./routes/auth');
+const adminRoute = require('./routes/admins');
+const postRoute = require('./routes/posts');
 
 dotenv.config();
 app.use(express.json());
@@ -17,6 +19,8 @@ mongoose
     .catch((error) => console.log(error));
 
 app.use('/blog-backend/auth', authRoute);
+app.use('/blog-backend/admins', adminRoute);
+app.use('/blog-backend/posts', postRoute);
 
 app.use('/', (req, res) => {
     console.log('main url');
